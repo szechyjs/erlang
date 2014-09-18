@@ -24,5 +24,8 @@ default['erlang']['source']['checksum'] = 'f94f7de7328af3c0cdc42089c1a4ecd03bf98
 default['erlang']['source']['build_flags'] = ''
 default['erlang']['source']['cflags'] = ''
 
+default['erlang']['package']['use_rhel5_repo'] = true
+default['erlang']['package']['rhel5_baseurl'] = 'https://repos.fedorapeople.org/repos/peter/erlang/epel-5Server/$basearch'
+
 default['erlang']['esl']['version'] = nil
 default['erlang']['esl']['lsb_codename'] = node['lsb'] ? node['lsb']['codename'] : 'no_lsb'

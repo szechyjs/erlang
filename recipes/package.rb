@@ -32,12 +32,14 @@ when 'rhel'
   when 5
     include_recipe 'yum-epel'
 
-    yum_repository 'EPELErlangrepo' do
-      description "Updated erlang yum repository for RedHat / Centos 5.x - #{node['kernel']['machine']}"
-      baseurl 'https://repos.fedorapeople.org/repos/peter/erlang/epel-5Server/$basearch'
-      gpgcheck false
-      sslverify false
-      action :create
+    if node['erlang']['package']['use_rhel5_repo']
+      yum_repository 'EPELErlangrepo' do
+        description "Updated erlang yum repository for RedHat / Centos 5.x - #{node['kernel']['machine']}"
+        baseurl node['erlang']['package']['rhel5_baseurl']
+        gpgcheck false
+        sslverify false
+        action :create
+      end
     end
 
   else
